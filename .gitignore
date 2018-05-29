@@ -15,6 +15,9 @@
 
 config/database.yml
 .env
+.env.development
+.env.test
+.env.production
 # Ignore uploaded files in development
 /storage/*
 

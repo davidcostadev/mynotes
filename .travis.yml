@@ -20,7 +20,7 @@ install:
   - yarn install
 before_script:
   - "cp config/database.yml.example config/database.yml"
-  - "cp .env.sample .env"
+  - "cp .env.sample .env.test"
   - "bundle exec rake db:setup"
 rvm:
   - 2.4.1
