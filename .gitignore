@@ -14,7 +14,7 @@
 !/tmp/.keep
 
 config/database.yml
-
+.env
 # Ignore uploaded files in development
 /storage/*
 
