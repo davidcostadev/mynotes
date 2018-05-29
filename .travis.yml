@@ -1,3 +1,6 @@
+env:
+  global:
+    - CC_TEST_REPORTER_ID=bba4e6185ab5e861c218dd45e2e2bdb7ce743df1eceed9b325a6c85a0335ec86
 language: ruby
 cache: bundler
 services:
@@ -19,10 +22,15 @@ install:
   - npm install --global yarn
   - yarn install
 before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
   - "cp config/database.yml.example config/database.yml"
   - "cp .env.sample .env.test"
   - "bundle exec rake db:setup"
 rvm:
   - 2.4.1
 script:
-  - "bundle exec codeclimate-test-reporter"
+  - "bundle exec rake"
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
