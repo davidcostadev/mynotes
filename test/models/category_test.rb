@@ -1,7 +1,11 @@
 require 'test_helper'
 
 class CategoryTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  def setup
+    @category = categories(:one)
+  end
+
+  test 'should be valid' do
+    assert @category.valid?
+  end
 end
